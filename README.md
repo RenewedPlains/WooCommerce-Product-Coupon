@@ -11,6 +11,7 @@ I. Just download a zip-droplet and upload it to your wordpress plugin folder.
 
 II. Official Store wordpress.org is coming soon... If you have trouble, feel free to contact me via github.
 
+![alt text](https://dev.webcoder.ch/img/couponfreeproduct.png)
 
 Made in switzerland
 Mario Freuler
