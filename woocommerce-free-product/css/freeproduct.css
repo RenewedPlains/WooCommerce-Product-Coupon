@@ -1,0 +1,16 @@
+.deletefreeproduct {
+    display: inline-block;
+    margin-top: 5px;
+    cursor: pointer;
+    font-size: 22px;
+    transition: all 0.4s ease;
+}
+
+.deletefreeproduct:hover {
+    color: red;
+}
+
+ul.coupon_data_tabs li.carrot_options a:before {
+    font-family: 'Dashicons' !important;
+    content: "\f511" !important;
+}
