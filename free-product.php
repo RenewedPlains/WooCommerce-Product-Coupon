@@ -43,10 +43,55 @@ function filter_woocommerce_coupon_data_tabs( $array ) {
 			'target' => 'add_free_product',
 			'class'  => '',
 		),
+		'competition' => array(
+			'label'  => __( 'Competition', 'woocommerce-freeproduct' ),
+			'icon' => 'coupon',
+			'target' => 'competition',
+			'class'  => '',
+		),
 	);
 	return $array;
 };
 add_filter( 'woocommerce_coupon_data_tabs', 'filter_woocommerce_coupon_data_tabs', 10, 1 );
+
+function wh_getOrderbyCouponCode($coupon_code, $start_date, $end_date) {
+	global $wpdb;
+	$return_array = [];
+	$total_discount = 0;
+
+	$query = "SELECT
+        p.ID AS order_id
+        FROM
+        {$wpdb->prefix}posts AS p
+        INNER JOIN {$wpdb->prefix}woocommerce_order_items AS woi ON p.ID = woi.order_id
+        WHERE
+        p.post_type = 'shop_order' AND
+        p.post_status IN ('" . implode("','", array_keys(wc_get_order_statuses())) . "') AND
+        woi.order_item_type = 'coupon' AND
+        woi.order_item_name = '" . $coupon_code . "' AND
+        DATE(p.post_date) BETWEEN '" . $start_date . "' AND '" . $end_date . "';";
+
+	$orders = $wpdb->get_results($query);
+
+	if (!empty($orders)) {
+		$dp = ( isset($filter['dp']) ? intval($filter['dp']) : 2 );
+		//looping throught all the order_id
+		foreach ($orders as $key => $order) {
+			$order_id = $order->order_id;
+			//getting order object
+			$objOrder = wc_get_order($order_id);
+
+			$return_array[$key]['order_id'] = $order_id;
+			$return_array[$key]['total'] = wc_format_decimal($objOrder->get_total(), $dp);
+			$return_array[$key]['total_discount'] = wc_format_decimal($objOrder->get_total_discount(), $dp);
+			$total_discount += $return_array[$key]['total_discount'];
+		}
+//        echo '<pre>';
+//        print_r($return_array);
+	}
+	$return_array['full_discount'] = $total_discount;
+	return $return_array;
+}
 
 
 // Add stylesheet and javascript in backend
@@ -57,9 +102,26 @@ function freeproduct_scripts( ) {
 add_action( 'admin_enqueue_scripts', 'freeproduct_scripts' );
 
 
+// Competition options for counting all usage of this couponcode
+function competition_coupon( $coupon_get_id ) {
+    echo $coupon_get_id;
+	echo '<div id="competition" class="freeproductpanel woocommerce_options_panel panel">
+	<div class="options_group">
+	<p>';
+	$datenow = date('Y-m-d');
+	$getcoupon = $string = wc_get_coupon_code_by_id( $coupon_get_id );
+    $orders = wh_getOrderbyCouponCode($getcoupon, '2003-09-17', $datenow);
+    echo 'Total Discount : ' . $orders['full_discount'];
+    echo '</p>
+    </div>';
+}
+add_filter( 'woocommerce_coupon_data_panels', 'competition_coupon', 10, 2 );
+
+
 // Define panel script with productsearch
 function action_woocommerce_coupon_options_usage_limit( $coupon_get_id ) {
 	echo '<div id="add_free_product" class="freeproductpanel woocommerce_options_panel panel">
+
 	<div class="options_group">
 		<p>'. __( 'Select one of your products. This product will be automatically added to the shopping cart as soon as the corresponding voucher code is used in the shopping cart.', 'woocommerce-freeproduct' ) .'</p>'; ?>
 		<p class="form-field">
