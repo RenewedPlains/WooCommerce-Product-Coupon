@@ -72,11 +72,13 @@ function wh_getOrderbyCouponCode($coupon_code, $start_date, $end_date) {
         DATE(p.post_date) BETWEEN '" . $start_date . "' AND '" . $end_date . "';";
 
 	$orders = $wpdb->get_results($query);
-
+    echo '<table>';
 	if (!empty($orders)) {
 		$dp = ( isset($filter['dp']) ? intval($filter['dp']) : 2 );
 		//looping throught all the order_id
 		foreach ($orders as $key => $order) {
+
+
 			$order_id = $order->order_id;
 			//getting order object
 			$objOrder = wc_get_order($order_id);
@@ -85,9 +87,16 @@ function wh_getOrderbyCouponCode($coupon_code, $start_date, $end_date) {
 			$return_array[$key]['total'] = wc_format_decimal($objOrder->get_total(), $dp);
 			$return_array[$key]['total_discount'] = wc_format_decimal($objOrder->get_total_discount(), $dp);
 			$total_discount += $return_array[$key]['total_discount'];
+			$order_customer_id = $objOrder->get_user_id();
+			$user_info = get_userdata($order_customer_id);
+			$nicename = $user_info->user_nicename;
+            $orderlink_backend = '/wp-admin/post.php?post='. $order_id . '&action=edit';
+			echo '<tr><td><a href="'. $orderlink_backend .'">#' .$order_id .' '. $nicename .'</a></td><td>&nbsp;</td></tr>';
 		}
+		echo '</table>';
 //        echo '<pre>';
 //        print_r($return_array);
+        echo count($orders);
 	}
 	$return_array['full_discount'] = $total_discount;
 	return $return_array;
@@ -104,7 +113,6 @@ add_action( 'admin_enqueue_scripts', 'freeproduct_scripts' );
 
 // Competition options for counting all usage of this couponcode
 function competition_coupon( $coupon_get_id ) {
-    echo $coupon_get_id;
 	echo '<div id="competition" class="freeproductpanel woocommerce_options_panel panel">
 	<div class="options_group">
 	<p>';

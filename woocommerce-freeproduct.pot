@@ -1,13 +1,14 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Coupon Free Product\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-08 10:17+0000\n"
-"PO-Revision-Date: 2018-05-08 10:18+0000\n"
-"Last-Translator: admin <mario.freuler@snk.ch>\n"
-"Language-Team: German (Switzerland)\n"
-"Language: de_CH\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,10 +20,6 @@ msgid ""
 "Make your settings under <a href=\"http://compute.local/wp-admin/edit.php?"
 "post_type=product\">Products</a> (Hide in searchresults, set prices to 0...)."
 msgstr ""
-"<strong>Hinweis:</strong> Das hier ausgewählte Produkt wird nicht "
-"automatisch modifiziert. Nehmen Sie die Einstellungen unter <a href=\"http:"
-"//compute.local/wp-admin/edit.php?post_type=product\">Produkte</a> vor (In "
-"Suchresultaten verbergen, Preise auf 0 setzen...)."
 
 #: free-product.php:47
 msgid "Competition"
@@ -34,9 +31,8 @@ msgstr ""
 
 #: free-product.php:41
 msgid "Free product"
-msgstr "Kostenloses Produkt"
+msgstr ""
 
-#. URI of the plugin
 #. Author URI of the plugin
 msgid "http://webcoder.ch"
 msgstr ""
@@ -47,7 +43,7 @@ msgstr ""
 
 #: free-product.php:180
 msgid "No free product"
-msgstr "Kein kostenloses Produkt"
+msgstr ""
 
 #. Author of the plugin
 msgid "RenewedPlains"
@@ -59,9 +55,6 @@ msgid ""
 "assignment. As soon as the given coupon code is added to the shopping cart, "
 "the product is automatically added to the shopping cart."
 msgstr ""
-"Erfordert WooCommerce. Fügt einen Tab im Couponmenü hinzu für eine verlinkte "
-"Produktzuordnung. Sobald gegebener Couponcode im Warenkorb hinzugefügt wird, "
-"wird das Produkt automatisch in den Warenkorb hinzugefügt."
 
 #: free-product.php:134
 msgid ""
@@ -69,6 +62,3 @@ msgid ""
 "shopping cart as soon as the corresponding voucher code is used in the "
 "shopping cart."
 msgstr ""
-"Wählen Sie hier eines Ihrer Produkte aus. Dieses Produkt wird automatisch "
-"dem Warenkorb hinzugefügt, sobald der entsprechende Gutscheincode im "
-"Warenkorb verwendet wird."

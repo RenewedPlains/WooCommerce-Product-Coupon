@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Coupon Free Product\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-08 10:17+0000\n"
-"PO-Revision-Date: 2018-05-08 10:18+0000\n"
+"POT-Creation-Date: 2018-04-24 23:45+0000\n"
+"PO-Revision-Date: 2018-04-24 23:45+0000\n"
 "Last-Translator: admin <mario.freuler@snk.ch>\n"
-"Language-Team: German (Switzerland)\n"
+"Language-Team: Deutsch (Schweiz)\n"
 "Language: de_CH\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: free-product.php:151
+#: free-product.php:34
+msgid "Free product"
+msgstr "Kostenloses Produkt"
+
+#: free-product.php:57
+msgid ""
+"Select one of your products. This product will be automatically added to the "
+"shopping cart as soon as the corresponding voucher code is used in the "
+"shopping cart."
+msgstr ""
+"Wählen Sie hier eines Ihrer Produkte aus. Dieses Produkt wird automatisch "
+"dem Warenkorb hinzugefügt, sobald der entsprechende Gutscheincode im "
+"Warenkorb verwendet wird."
+
+#: free-product.php:74
 msgid ""
 "<strong>Note:</strong> The selected product is not automatically modified. "
 "Make your settings under <a href=\"http://compute.local/wp-admin/edit.php?"
@@ -24,33 +38,12 @@ msgstr ""
 "//compute.local/wp-admin/edit.php?post_type=product\">Produkte</a> vor (In "
 "Suchresultaten verbergen, Preise auf 0 setzen...)."
 
-#: free-product.php:47
-msgid "Competition"
-msgstr ""
-
-#. Name of the plugin
-msgid "Coupon Free Product"
-msgstr ""
-
-#: free-product.php:41
-msgid "Free product"
-msgstr "Kostenloses Produkt"
-
-#. URI of the plugin
-#. Author URI of the plugin
-msgid "http://webcoder.ch"
-msgstr ""
-
-#. URI of the plugin
-msgid "https://github.com/RenewedPlains/WooCommerce-Product-Coupon"
-msgstr ""
-
-#: free-product.php:180
+#: free-product.php:103
 msgid "No free product"
 msgstr "Kein kostenloses Produkt"
 
-#. Author of the plugin
-msgid "RenewedPlains"
+#. Name of the plugin
+msgid "Coupon Free Product"
 msgstr ""
 
 #. Description of the plugin
@@ -63,12 +56,11 @@ msgstr ""
 "Produktzuordnung. Sobald gegebener Couponcode im Warenkorb hinzugefügt wird, "
 "wird das Produkt automatisch in den Warenkorb hinzugefügt."
 
-#: free-product.php:134
-msgid ""
-"Select one of your products. This product will be automatically added to the "
-"shopping cart as soon as the corresponding voucher code is used in the "
-"shopping cart."
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "http://webcoder.ch"
 msgstr ""
-"Wählen Sie hier eines Ihrer Produkte aus. Dieses Produkt wird automatisch "
-"dem Warenkorb hinzugefügt, sobald der entsprechende Gutscheincode im "
-"Warenkorb verwendet wird."
+
+#. Author of the plugin
+msgid "webcoder.ch, Mario Freuler"
+msgstr ""
