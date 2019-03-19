@@ -37,7 +37,7 @@ function filter_woocommerce_coupon_data_tabs( $array ) {
 			'target' => 'usage_limit_coupon_data',
 			'class'  => '',
 		),
-		'carrot' => array(
+		'add_free_product' => array(
 			'label'  => __( 'Free product', 'woocommerce-freeproduct' ),
 			'icon' => 'carrot',
 			'target' => 'add_free_product',
@@ -56,7 +56,7 @@ add_filter( 'woocommerce_coupon_data_tabs', 'filter_woocommerce_coupon_data_tabs
 
 function wh_getOrderbyCouponCode($coupon_code, $start_date, $end_date) {
 	global $wpdb;
-	$return_array = [];
+	$return_array = array();
 	$total_discount = 0;
 
 	$query = "SELECT
@@ -111,25 +111,9 @@ function freeproduct_scripts( ) {
 add_action( 'admin_enqueue_scripts', 'freeproduct_scripts' );
 
 
-// Competition options for counting all usage of this couponcode
-function competition_coupon( $coupon_get_id ) {
-	echo '<div id="competition" class="freeproductpanel woocommerce_options_panel panel">
-	<div class="options_group">
-	<p>';
-	$datenow = date('Y-m-d');
-	$getcoupon = $string = wc_get_coupon_code_by_id( $coupon_get_id );
-    $orders = wh_getOrderbyCouponCode($getcoupon, '2003-09-17', $datenow);
-    echo 'Total Discount : ' . $orders['full_discount'];
-    echo '</p>
-    </div>';
-}
-add_filter( 'woocommerce_coupon_data_panels', 'competition_coupon', 10, 2 );
-
-
 // Define panel script with productsearch
 function action_woocommerce_coupon_options_usage_limit( $coupon_get_id ) {
 	echo '<div id="add_free_product" class="freeproductpanel woocommerce_options_panel panel">
-
 	<div class="options_group">
 		<p>'. __( 'Select one of your products. This product will be automatically added to the shopping cart as soon as the corresponding voucher code is used in the shopping cart.', 'woocommerce-freeproduct' ) .'</p>'; ?>
 		<p class="form-field">
@@ -151,6 +135,21 @@ function action_woocommerce_coupon_options_usage_limit( $coupon_get_id ) {
 	<p><?php _e( '<strong>Note:</strong> The selected product is not automatically modified. Make your settings under <a href="http://compute.local/wp-admin/edit.php?post_type=product">Products</a> (Hide in searchresults, set prices to 0...).', 'woocommerce-freeproduct' ); ?></p></div><?php
 }
 add_filter( 'woocommerce_coupon_data_panels', 'action_woocommerce_coupon_options_usage_limit', 10, 2 );
+
+
+// Competition options for counting all usage of this couponcode
+function competition_coupon( $coupon_get_id ) {
+    echo '<div id="competition" class="freeproductpanel woocommerce_options_panel panel">
+	<div class="options_group">
+	<p>';
+    $datenow = date('Y-m-d');
+    $getcoupon = $string = wc_get_coupon_code_by_id( $coupon_get_id );
+    $orders = wh_getOrderbyCouponCode($getcoupon, '2003-09-17', $datenow);
+    echo 'Total Discount: ' . $orders['full_discount'];
+    echo '</p>
+    </div></div>';
+}
+add_filter( 'woocommerce_coupon_data_panels', 'competition_coupon', 10, 2 );
 
 
 // Save the selectboxvalue in database in post_meta
