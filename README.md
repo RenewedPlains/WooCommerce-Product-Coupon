@@ -6,7 +6,7 @@ You have the possibility to set the price of the product to 0.00 in the product 
 
 Otherwise it could also be pre-release products or free products that should only be ordered by visitors who have this coupon code.
 
-![alt text](https://dev.webcoder.ch/img/couponfreeproduct.png)
+![alt text](https://bojett.com/img/woocommerce_free_product_plugin_coupon.png)
 
 
 
