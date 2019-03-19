@@ -42,13 +42,13 @@ function filter_woocommerce_coupon_data_tabs( $array ) {
 			'icon' => 'carrot',
 			'target' => 'add_free_product',
 			'class'  => '',
-		),
+		),/*
 		'competition' => array(
 			'label'  => __( 'Competition', 'woocommerce-freeproduct' ),
 			'icon' => 'coupon',
 			'target' => 'competition',
 			'class'  => '',
-		),
+		),*/
 	);
 	return $array;
 };
@@ -137,7 +137,7 @@ function action_woocommerce_coupon_options_usage_limit( $coupon_get_id ) {
 add_filter( 'woocommerce_coupon_data_panels', 'action_woocommerce_coupon_options_usage_limit', 10, 2 );
 
 
-// Competition options for counting all usage of this couponcode
+/*// Competition options for counting all usage of this couponcode
 function competition_coupon( $coupon_get_id ) {
     echo '<div id="competition" class="freeproductpanel woocommerce_options_panel panel">
 	<div class="options_group">
@@ -150,7 +150,7 @@ function competition_coupon( $coupon_get_id ) {
     </div></div>';
 }
 add_filter( 'woocommerce_coupon_data_panels', 'competition_coupon', 10, 2 );
-
+*/
 
 // Save the selectboxvalue in database in post_meta
 function save_code( $coupon_get_id ) {
