@@ -37,7 +37,7 @@ function filter_woocommerce_coupon_data_tabs( $array ) {
 			'target' => 'usage_limit_coupon_data',
 			'class'  => '',
 		),
-		'add_free_product' => array(
+		'carrot' => array(
 			'label'  => __( 'Free product', 'woocommerce-freeproduct' ),
 			'icon' => 'carrot',
 			'target' => 'add_free_product',
