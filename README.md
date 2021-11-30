@@ -15,6 +15,7 @@ I. Just download a zip-droplet and upload it to your wordpress plugin folder.
 
 II. Official Store wordpress.org is coming soon... If you have trouble, feel free to contact me via github.
 
+[https://tschaki.com/en/free-product-for-woocommerce-coupons/](https://tschaki.com/en/free-product-for-woocommerce-coupons/)
 
 Made in switzerland
 
