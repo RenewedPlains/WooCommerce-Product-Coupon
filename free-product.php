@@ -54,6 +54,7 @@ function filter_woocommerce_coupon_data_tabs( $array ) {
 };
 add_filter( 'woocommerce_coupon_data_tabs', 'filter_woocommerce_coupon_data_tabs', 10, 1 );
 
+
 function wh_getOrderbyCouponCode($coupon_code, $start_date, $end_date) {
 	global $wpdb;
 	$return_array = array();
@@ -77,8 +78,6 @@ function wh_getOrderbyCouponCode($coupon_code, $start_date, $end_date) {
 		$dp = ( isset($filter['dp']) ? intval($filter['dp']) : 2 );
 		//looping throught all the order_id
 		foreach ($orders as $key => $order) {
-
-
 			$order_id = $order->order_id;
 			//getting order object
 			$objOrder = wc_get_order($order_id);
@@ -94,8 +93,6 @@ function wh_getOrderbyCouponCode($coupon_code, $start_date, $end_date) {
 			echo '<tr><td><a href="'. $orderlink_backend .'">#' .$order_id .' '. $nicename .'</a></td><td>&nbsp;</td></tr>';
 		}
 		echo '</table>';
-//        echo '<pre>';
-//        print_r($return_array);
         echo count($orders);
 	}
 	$return_array['full_discount'] = $total_discount;
@@ -136,21 +133,6 @@ function action_woocommerce_coupon_options_usage_limit( $coupon_get_id ) {
 }
 add_filter( 'woocommerce_coupon_data_panels', 'action_woocommerce_coupon_options_usage_limit', 10, 2 );
 
-
-/*// Competition options for counting all usage of this couponcode
-function competition_coupon( $coupon_get_id ) {
-    echo '<div id="competition" class="freeproductpanel woocommerce_options_panel panel">
-	<div class="options_group">
-	<p>';
-    $datenow = date('Y-m-d');
-    $getcoupon = $string = wc_get_coupon_code_by_id( $coupon_get_id );
-    $orders = wh_getOrderbyCouponCode($getcoupon, '2003-09-17', $datenow);
-    echo 'Total Discount: ' . $orders['full_discount'];
-    echo '</p>
-    </div></div>';
-}
-add_filter( 'woocommerce_coupon_data_panels', 'competition_coupon', 10, 2 );
-*/
 
 // Save the selectboxvalue in database in post_meta
 function save_code( $coupon_get_id ) {
